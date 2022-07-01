@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block nav_links %}
+    <h5 class="my-0 mr-md-auto font-weight-normal">Web Crawler</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="{{ url_for('webcrawler.search') }}">SEARCH</a>
+    </nav>
+  <!-- <a class="btn btn-outline-primary" href="">New URL</a> -->
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="card-deck mb-3">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal text-center">Crawl & Index any Domain</h4>
+        </div>
+        <div class="card-body">
+          <form action="crawl" method="post">
+            <label for="url">Domain URL</label>
+            <input type="text" class="form-control" name="url" id="url" value="" required>
+            <br>
+            <label for="depth">Crawl Depth</label>
+            <input type="text" class="form-control" name="depth" id="depth" value="" required>
+            <br>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Crawl</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>{% endblock %}

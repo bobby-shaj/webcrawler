@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block nav_links %}
+    <h5 class="my-0 mr-md-auto font-weight-normal">Results</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="{{ url_for('webcrawler.home') }}">Home</a>
+    </nav>
+  <!-- <a class="btn btn-outline-primary" href="">New URL</a> -->
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="card-deck mb-3">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+          <h6 class="my-0 font-weight-normal text-center text-dark">Search Results</h6>
+        </div>
+        <div class="card-body">
+          <form action="search-results" method="post">
+            <input type="text" class="form-control" name="search-phrase" id="search-phrase" value="{{phrase}}" required>
+          </form>
+
+          {% if results|length > 0 %}
+            <ul>
+              {% for key, value in results.items() %}
+              <a href="{{ key }}">
+                <li>{{ key }}</li>
+              </a>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="pl-2 pt-2 text-danger">No results were found.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
